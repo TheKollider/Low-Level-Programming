@@ -1,0 +1,30 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "cppbuild",
+			"label": "C/C++: cpp build active file",
+			"command": "/usr/bin/cpp",
+			"args": [
+				"-g",
+				"${file}",
+				"-o",
+				"${fileDirname}/${fileBasenameNoExtension}",
+				"${workspaceFolder}/FooterObject.cpp",
+				"${workspaceFolder}/HeaderObject.cpp",
+				"${workspaceFolder}/main.cpp",
+				"${workspaceFolder}/MemoryPool.cpp",
+				"${workspaceFolder}/Sphere.cpp",
+				"${workspaceFolder}/vec3.cpp",
+			],
+			"options": {
+				"cwd": "${workspaceFolder}"
+			},
+			"problemMatcher": [
+				"$gcc"
+			],
+			"group": "build",
+			"detail": "compiler: /usr/bin/cpp"
+		}
+	]
+}

@@ -1,0 +1,32 @@
+﻿  main.cpp
+C:\Users\Tayz\Desktop\Ray trace LLP - fixed\RayTracerSmall\main.h(25,1): warning C4005: 'INFINITY': macro redefinition
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90): message : see previous definition of 'INFINITY'
+C:\Users\Tayz\Desktop\Ray trace LLP - fixed\RayTracerSmall\main.cpp(78,19): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\Tayz\Desktop\Ray trace LLP - fixed\RayTracerSmall\main.cpp(84,60): warning C4305: 'argument': truncation from 'double' to 'const float'
+C:\Users\Tayz\Desktop\Ray trace LLP - fixed\RayTracerSmall\main.cpp(84,32): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
+C:\Users\Tayz\Desktop\Ray trace LLP - fixed\RayTracerSmall\main.cpp(93,19): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\Tayz\Desktop\Ray trace LLP - fixed\RayTracerSmall\main.cpp(148,14): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\Tayz\Desktop\Ray trace LLP - fixed\RayTracerSmall\main.cpp(152,13): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\Tayz\Desktop\Ray trace LLP - fixed\RayTracerSmall\main.cpp(153,13): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\Tayz\Desktop\Ray trace LLP - fixed\RayTracerSmall\main.cpp(180,81): warning C4305: 'argument': truncation from 'double' to 'T'
+          with
+          [
+              T=float
+          ]
+C:\Users\Tayz\Desktop\Ray trace LLP - fixed\RayTracerSmall\main.cpp(181,78): warning C4305: 'argument': truncation from 'double' to 'T'
+          with
+          [
+              T=float
+          ]
+C:\Users\Tayz\Desktop\Ray trace LLP - fixed\RayTracerSmall\main.cpp(182,73): warning C4305: 'argument': truncation from 'double' to 'T'
+          with
+          [
+              T=float
+          ]
+C:\Users\Tayz\Desktop\Ray trace LLP - fixed\RayTracerSmall\main.cpp(183,72): warning C4305: 'argument': truncation from 'double' to 'T'
+          with
+          [
+              T=float
+          ]
+C:\Users\Tayz\Desktop\Ray trace LLP - fixed\RayTracerSmall\main.cpp(184,18): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  RayTracerSmall.vcxproj -> C:\Users\Tayz\Desktop\Ray trace LLP - fixed\x64\Debug\RayTracerSmall.exe
