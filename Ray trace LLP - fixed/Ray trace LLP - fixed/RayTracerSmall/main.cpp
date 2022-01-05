@@ -135,13 +135,16 @@ Vec3f trace(
 //[/comment]
 void render(const std::vector<Sphere> &spheres, int iteration)
 {
-	// quick and dirty
-	//unsigned width = 640, height = 480;
+
 	// Recommended Testing Resolution
 	unsigned width = 640, height = 480;
 
 	// Recommended Production Resolution
 	//unsigned width = 1920, height = 1080;
+
+	// 4K resolution (2160p)
+	//unsigned width = 3840, height = 2160;
+
 	Vec3f *image = new Vec3f[width * height], *pixel = image;
 	float invWidth = 1 / float(width), invHeight = 1 / float(height);
 	float fov = 30, aspectratio = width / float(height);
@@ -156,21 +159,46 @@ void render(const std::vector<Sphere> &spheres, int iteration)
 			*pixel = trace(Vec3f(0), raydir, spheres, 0);
 		}
 	}
-	// Save result to a PPM image (keep these flags if you compile under Windows)
+	 //Save result to a PPM image (keep these flags if you compile under Windows)
+//  	std::stringstream ss;
+//  	ss << "./spheres" << iteration << ".ppm";
+//  	std::string tempString = ss.str();
+//  	char* filename = (char*)tempString.c_str();
+//  
+//  	std::ofstream ofs(filename, std::ios::out | std::ios::binary);
+//  	ofs << "P6\n" << width << " " << height << "\n255\n";
+//  	for (unsigned i = 0; i < width * height; ++i) {
+//  		ofs << (unsigned char)(std::min(float(1), image[i].x) * 255) <<
+//  			(unsigned char)(std::min(float(1), image[i].y) * 255) <<
+//  			(unsigned char)(std::min(float(1), image[i].z) * 255);
+//  	}
+//  	ofs.close();
+//  	delete[] image;
+
 	std::stringstream ss;
 	ss << "./spheres" << iteration << ".ppm";
 	std::string tempString = ss.str();
-	char* filename = (char*)tempString.c_str();
+	char* fileName = (char*)tempString.c_str();
 
-	std::ofstream ofs(filename, std::ios::out | std::ios::binary);
-	ofs << "P6\n" << width << " " << height << "\n255\n";
-	for (unsigned i = 0; i < width * height; ++i) {
-		ofs << (unsigned char)(std::min(float(1), image[i].x) * 255) <<
-			(unsigned char)(std::min(float(1), image[i].y) * 255) <<
-			(unsigned char)(std::min(float(1), image[i].z) * 255);
+	std::stringstream fss;
+	std::string imageBuffer;
+	int count = -1;
+	imageBuffer.resize(width * height * 3);
+	fss << "P6\n" << width << " " << height << "\n255\n";
+	for (unsigned i = 0; i < width * height; ++i) 
+	{
+		imageBuffer[++count] = (char)(std::min(float(1), image[i].x) * 255);
+		imageBuffer[++count] = (char)(std::min(float(1), image[i].y) * 255);
+		imageBuffer[++count] = (char)(std::min(float(1), image[i].z) * 255);
 	}
+
+	fss.write(imageBuffer.c_str(), width * height * 3);
+	std::ofstream ofs(fileName, std::ios::out | std::ios::binary);
+	ofs << fss.rdbuf();
 	ofs.close();
 	delete[] image;
+
+
 }
 
 void GetSpheres(float r)
@@ -200,18 +228,23 @@ void SmoothScaling()
 	for (auto& t : threads)
 	{
 		t.join();
+	}
 
-// 		std::vector<Sphere> spheres;
+// 	std::vector<Sphere> spheres;
+// 	// Vector structure for Sphere (position, radius, surface color, reflectivity, transparency, emission color)
 // 
+// 	for (float r = 0; r <= 100; r++)
+// 	{
 // 		spheres.push_back(Sphere(Vec3f(0.0, -10004, -20), 10000, Vec3f(0.20, 0.20, 0.20), 0, 0.0));
 // 		spheres.push_back(Sphere(Vec3f(0.0, 0, -20), r / 100, Vec3f(1.00, 0.32, 0.36), 1, 0.5)); // Radius++ change here
 // 		spheres.push_back(Sphere(Vec3f(5.0, -1, -15), 2, Vec3f(0.90, 0.76, 0.46), 1, 0.0));
 // 		spheres.push_back(Sphere(Vec3f(5.0, 0, -25), 3, Vec3f(0.65, 0.77, 0.97), 1, 0.0));
 // 		render(spheres, r);
 // 		std::cout << "Rendered and saved spheres" << r << ".ppm" << std::endl;
-// 		// Don't forget to clear the Vector holding the spheres.
+// 		// Dont forget to clear the Vector holding the spheres.
 // 		spheres.clear();
-	}
+// 
+// 	}
 }
 //[comment]
 // In the main function, we will create the scene which is composed of 5 spheres
