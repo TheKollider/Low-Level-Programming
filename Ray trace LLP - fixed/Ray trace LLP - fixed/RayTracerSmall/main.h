@@ -17,8 +17,13 @@
 #include "sphere.h"
 #include "MemoryPool.h"
 
+
+
+
 #if defined __linux__ || defined __APPLE__
 // "Compiled for Linux
+#include <unistd.h>
+#include <sys/wait.h>
 #else
 // Windows doesn't define these values by default, Linux does
 #define M_PI 3.141592653589793
